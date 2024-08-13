@@ -1,8 +1,7 @@
-from collections import defaultdict
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
         temp = j = 0
-        val = defaultdict(int)
+        val = {"a": 0, "b": 0, "c": 0}
         
         for i in range(len(s)):
             val[s[i]] += 1            
