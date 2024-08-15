@@ -3,6 +3,6 @@ class Solution:
         i = j = 1
         for k in range (n-1):
             temp = i
-            i = i + j
+            i += j
             j = temp
         return i
