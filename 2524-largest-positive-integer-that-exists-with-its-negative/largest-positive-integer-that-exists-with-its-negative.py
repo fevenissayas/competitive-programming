@@ -1,14 +1,10 @@
+
 class Solution:
     def findMaxK(self, nums: List[int]) -> int:
-        nums.sort()
-        i, j = 0, len(nums) - 1
-
-        while i < j:           
-            if nums[i] + nums[j] == 0:
-                return nums[j]         
-            elif nums[i] + nums[j] < 0 :
-                i += 1           
-            else:
-                j -= 1
-
-        return -1
+        a = []
+        for i in nums:
+            if -i in nums and i >0:
+                a.append(i)
+        if a == []:
+            return -1
+        return max(a)
