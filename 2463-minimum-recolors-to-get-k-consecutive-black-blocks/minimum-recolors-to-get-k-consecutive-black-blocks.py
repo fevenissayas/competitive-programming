@@ -1,12 +1,16 @@
 class Solution:
-    def minimumRecolors(self, blocksocks: str, k: int) -> int:
-        op = sum(1 for i in range(k) if blocksocks[i] == 'W') 
-        num = op
-        for i in range(k, len(blocksocks)):
-            if blocksocks[i - k] == 'W':
-                num -= 1
-            if blocksocks[i] == 'W':
-                num += 1
-            op = min(op, num)
+    def minimumRecolors(self, blocks: str, k: int) -> int:
+        w = 0
+        for i in range(k):
+            if blocks[i] == 'W':
+                w += 1
         
-        return op
+        val = w
+        for i in range(k, len(blocks)):
+            if blocks[i-k] == 'W':
+                w -= 1
+            if blocks[i] == 'W':
+                w += 1
+            val = min(val, w)
+        
+        return val              
