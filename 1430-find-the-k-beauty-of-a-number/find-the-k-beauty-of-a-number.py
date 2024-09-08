@@ -5,6 +5,7 @@ class Solution:
 
         for i in range(len(snum)-k + 1):
             val = int(snum[i:i+k])
-            if val != 0 and num % val == 0:
+            if val != 0:
+                if num % val == 0:
                     count += 1
         return count
