@@ -1,26 +1,20 @@
 class Solution:
     def longestNiceSubstring(self, s: str) -> str:
-        def capitalize(window):
-            low = set()
-            up = set()
-            for i in window:
-                if i.isupper():
-                    up.add(i)
-                else:
-                    low.add(i)
-
-            for i in low:
-                if i.upper() not in up:
-                    return False
-            for i in up:
-                if i.lower() not in low:
-                    return False
-            return True
-
         maxi = ""
         for i in range(len(s)):
-            for j in range(i+1, len(s)):
-                window = s[i:j+1]
-                if capitalize(window) and len(maxi) < len(window):
-                    maxi = window
+            low = set()
+            up = set()
+            for j in range(i, len(s)):
+                char = s[j]
+                if char.islower():
+                    low.add(char)
+                else:
+                    up.add(char)
+                
+                if (char.isupper() and char.lower() not in low) or (char.islower() and char.upper() not in up):
+                    continue
+                if len(low) == len(up) and all(c.upper() in up for c in low):
+                    if len(maxi) < len(s[i:j+1]):
+                        maxi = s[i:j+1]
+        
         return maxi
