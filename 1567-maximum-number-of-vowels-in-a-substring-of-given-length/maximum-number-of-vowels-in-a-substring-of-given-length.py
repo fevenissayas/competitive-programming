@@ -7,9 +7,9 @@ class Solution:
                 count += 1
         count2 = count        
         for i in range(k, len(s)):      
-            if s[i] in seen and s[i-k] not in seen:
+            if s[i] in seen:
                 count += 1 
-            elif s[i] not in seen and s[i-k] in seen:
+            if s[i-k] in seen:
                 count -= 1
             count2 = max(count, count2)
         return count2
