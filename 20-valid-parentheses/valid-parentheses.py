@@ -1,13 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        match = {")":"(", "}":"{", "]":"["}
         stack = []
-
+        dic = {")":"(", "]":"[", "}":"{"}
         for i in s:
-            if i in match.values():
-                stack.append(i)
-            elif i in match.keys():
-                if not stack or match[i] != stack.pop():
+            if i in dic:
+                if stack and stack [-1] == dic[i]:
+                    stack.pop()
+                else:
                     return False
-        
-        return not stack
+            else:
+                stack.append(i)
+
+        return True if not stack else False
