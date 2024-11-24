@@ -5,4 +5,5 @@ class Solution:
             for j in range(len(strs)):
                 if strs[j][i] != min_str[i]:
                     return min_str[:i]
+                    
         return min_str
