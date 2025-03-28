@@ -2,9 +2,10 @@ class Solution:
     def longestNiceSubstring(self, s: str) -> str:
         if len(s) == 1:
             return ""
-            
+
+        seen = set(s)
         for i, val in enumerate(s):
-            if val.lower() in s and val.upper() in s:
+            if val.swapcase() in seen:
                 continue
 
             left = self.longestNiceSubstring(s[:i])
