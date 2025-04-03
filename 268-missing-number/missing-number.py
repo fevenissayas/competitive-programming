@@ -6,4 +6,4 @@ class Solution:
             two = two ^ nums[i]
             one = one ^ (i + 1)
         
-        return (one ^ two)
+        return one ^ two
